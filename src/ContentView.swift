@@ -34,6 +34,11 @@ struct ContentView: View {
             }
         } detail: {
             Text("Select an item")
+        }.onAppear {
+            let req = Llama3Request(tokenizerPath: "/foo", prompt: "What color is colbalt?")
+            let llama3 = Llama3()
+            let rc = llama3.handle(req)
+            print(rc)
         }
     }
 

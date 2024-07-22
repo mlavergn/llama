@@ -7,8 +7,6 @@
 
 #import "llama3_cli.h"
 
-@implementation Llama3
-
 // MARK: - CLI
 
 void error_usage(void) {
@@ -26,8 +24,7 @@ void error_usage(void) {
     exit(EXIT_FAILURE);
 }
 
-int _main(int argc, char *argv[]) {
-
+int run(int argc, char *argv[]) {
     // default parameters
     char *checkpoint_path = NULL;    // e.g. out/model.bin
     char *tokenizer_path = "tokenizer.bin";
@@ -121,6 +118,18 @@ int _main(int argc, char *argv[]) {
     free_tokenizer(&tokenizer);
     free_transformer(&transformer);
     return 0;
+}
+
+@implementation IXLlama3
+
+-(NSInteger)run:(NSArray<NSString *> *)args {
+    NSInteger argc = args.count;
+    char *argv[argc];
+    for (NSInteger i=0; i<argc; i++) {
+        argv[i] = (char *)[args[i] cStringUsingEncoding:NSUTF8StringEncoding];
+    }
+    int rc = run((int)argc, argv);
+    return (NSInteger)rc;
 }
 
 @end

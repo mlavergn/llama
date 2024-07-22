@@ -14,7 +14,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Llama3: NSObject
+@interface IXLlama3: NSObject
+
+-(NSInteger)run:(NSArray<NSString *> *)args;
 
 @end
 

@@ -9,6 +9,7 @@
 #define llama3_transformer_h
 
 #import <stdlib.h>
+#import <sys/types.h>
 
 // MARK: - Transformer
 
